@@ -43,34 +43,42 @@ const Login = () => {
         </p>
 
         <form onSubmit={handleLogin}>
+          <label>
+            E-mail
+          </label>
           <input
-            value={email}
+            className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+  value={email}
             onChange={({target}) => setEmail(target.value)}
             label="Email Address"
             placeholder="john@example.com"
             type="text"
-            />
+          />
 
-            <input
-            value={password}
+          <label>
+            Password
+          </label>
+          <input
+            className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+  value={password}
             onChange={({target}) => setPassword(target.value)}
             label="Password"
             placeholder="Min 8 Characters"
             type="password"
-            />
+          />
 
             {error && <p className="text-red-500 text-x5 pb-2.5">{error}</p>}
 
             <button type="submit" className="btn-primary">
               LOGIN
-              </button>
+            </button>
 
             <p className="text [13px] text-slate-800 mt-3">
               Don't have an Account?{" "}
               <Link className="font-medium text-primary underline" to="/signup">
                 SignUp
               </Link>
-              </p>
+            </p>
           </form>
       </div>
     </AuthLayout>

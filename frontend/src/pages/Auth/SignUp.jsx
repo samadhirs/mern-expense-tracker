@@ -3,10 +3,11 @@ import AuthLayout from '../../components/layouts/AuthLayout'
 import {Link, useNavigate } from 'react-router-dom';
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
+import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
-  const [fullName, setFullName] = useState("null");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -52,32 +53,32 @@ const SignUp = () => {
 
         <form onSubmit={handleSignUp}>
 
-          <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
+          <ProfilePhotoSelector image="" setImage={setProfilePic}/>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
               lable="Full Name"
-              placeholder="John"
+              placeholder="Enter your name"
               type="text"
             />
 
             <Input
-            value={email}
-            onChange={({target}) => setEmail(target.value)}
-            label="Email Address"
-            placeholder="john@example.com"
-            type="text"
+              value={email}
+              onChange={({target}) => setEmail(target.value)}
+              label="Email Address"
+              placeholder="yourmail@example.com"
+              type="text"
             />
 
             <div className="col-span-2">
-            <Input
-            value={password}
-            onChange={({target}) => setPassword(target.value)}
-            label="Password"
-            placeholder="Min 8 Characters"
-            type="password"
-            />
+              <Input
+                value={password}
+                onChange={({target}) => setPassword(target.value)}
+                label="Password"
+                placeholder="Min 8 Characters"
+                type="password"
+              />
             </div>
       
             
