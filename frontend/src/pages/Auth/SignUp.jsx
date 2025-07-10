@@ -58,7 +58,7 @@ const SignUp = () => {
             <Input
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
-              lable="Full Name"
+              label="Full Name"
               placeholder="Enter your name"
               type="text"
             />
