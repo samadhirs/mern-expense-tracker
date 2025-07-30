@@ -6,9 +6,9 @@ const { isValidObjectId, Types } = require("mongoose");
 exports.getDashboardData = async (req, res) => {
     try {
         const userId = req.user.id;
-         if (!isValidObjectId(userId)) {
-            return res.status(400).json({ message: "Invalid user ID" });
-        }
+         //if (!isValidObjectId(userId)) {
+           // return res.status(400).json({ message: "Invalid user ID" });
+        //}
 
         const userObjectId = new Types.ObjectId(String(userId));
 
@@ -57,7 +57,7 @@ exports.getDashboardData = async (req, res) => {
                     type: "income",
                 })
             ),
-            ...Expense(await Expense.find({ userId }).sort({ date: -1 }).limit(5)).map(
+            ...(await Expense.find({ userId }).sort({ date: -1 }).limit(5)).map(
                 (txn) => ({
                      ...txn.toObject(),
                     type: "expense",
