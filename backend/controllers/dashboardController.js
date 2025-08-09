@@ -18,7 +18,7 @@ exports.getDashboardData = async (req, res) => {
             { $group: { _id: null, total: { $sum: "$amount" } } },
         ]);
 
-        console.log("totalIncome", { totalIncome, isValiduserId: isValidObjectId(userId) });
+        console.log("totalIncome", { totalIncome, userId: isValidObjectId(userId) });
 
         const totalExpense = await Expense.aggregate([
             { $match: { userId: userObjectId } },
@@ -44,7 +44,7 @@ exports.getDashboardData = async (req, res) => {
         }).sort ({ date: -1 });
 
         //Get total expenses for last 30 days
-        const expensesLast60Days = last30DaysExpenseTransactions.reduce(
+        const expensesLast30Days = last30DaysExpenseTransactions.reduce(
             (sum, transaction) => sum + transaction.amount,
             0
         );
@@ -72,7 +72,7 @@ exports.getDashboardData = async (req, res) => {
              totalIncome: totalIncome[0]?.total || 0,
              totalExpense: totalExpense[0]?.total || 0,
              last30DaysExpenses: {
-                total: expensesLast60Days,
+                total: expensesLast30Days,
                 transactions: last30DaysExpenseTransactions,
              },
              last60DaysIncome: {
