@@ -7,6 +7,8 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import { UserProvider } from './context/userContext';
+
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Dashboard/Home';
@@ -15,6 +17,9 @@ import Expences from './pages/Dashboard/Expences';
 
 const App = () => {
   return (
+    <UserProvider>
+
+    
     <div>
       <Router>
         <Routes>
@@ -27,8 +32,9 @@ const App = () => {
         </Routes>
       </Router>
     </div>
-  )
-}
+    </UserProvider>
+  );
+};
 
 export default App;
 
