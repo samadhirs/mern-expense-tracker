@@ -7,7 +7,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { UserProvider } from './context/userContext';
+import UserProvider from './context/userContext';
 
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
