@@ -1,9 +1,15 @@
-import React, {useState } from 'react'
-import AuthLayout from '../../components/layouts/AuthLayout'
+import React, {useState, useContext } from 'react';
+import AuthLayout from '../../components/layouts/AuthLayout';
 import {Link, useNavigate } from 'react-router-dom';
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
+import { UserContext } from "../../context/UserContext"; //import user context
+  //import axiosInstance and API PATHS
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
+import uploadImage from "../../utils/uploadImage";
+
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -52,6 +58,7 @@ const SignUp = () => {
         fullName,
         email,
         password,
+        profileImageUrl,
       });
 
       const { token, user } = response.data;
@@ -83,7 +90,7 @@ const SignUp = () => {
 
         <form onSubmit={handleSignUp}>
 
-          <ProfilePhotoSelector image="" setImage={setProfilePic}/>
+          <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               value={fullName}
