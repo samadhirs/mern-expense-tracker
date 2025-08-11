@@ -1,5 +1,4 @@
-//import React, { createContext, useState } from "react";
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
@@ -25,10 +24,8 @@ const UserProvider = ({ children }) => {
             }}
         >
             {children}
-
         </UserContext.Provider>
     );
 }
 
- 
 export default UserProvider;
