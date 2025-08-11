@@ -20,20 +20,21 @@ export  const useUserAuth = () => {
                 if (isMounted && response.data) {
                     updateUser(response.data);
                 }
-            } catch (error) {
+            } 
+            catch (error) {
                 console.error("Failed to fetch user info:", error);
                 if (isMounted) {
                     clearUser();
                     navigate("/login");
                 }
-        }
+            }
+        };
 
-    };
+        fetchUserInfo();
 
-    fetchUserInfo();
-
-    return () => {
-        isMounted = false;
-    };
-    }, [user, updateUser, clearUser, navigate]);
+        return () => {
+            isMounted = false;
+        };
+        }, [user, updateUser, clearUser, navigate]
+    );
 };
