@@ -1,11 +1,5 @@
-import React from 'react'
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import React from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import UserProvider from './context/UserContext';
 
@@ -18,20 +12,16 @@ import Expences from './pages/Dashboard/Expences';
 const App = () => {
   return (
     <UserProvider>
-
-    
-    <div>
-      <Router>
+      <div>
         <Routes>
           <Route path="/" element={<Root />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/signup" exact element={<SignUp />} />
-          <Route path="/dashboard" exact element={<Home />} />
-          <Route path="/income" exact element={<Income />} />
-          <Route path="/expense" exact element={<Expences />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/income" element={<Income />} />
+          <Route path="/expense" element={<Expences />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
     </UserProvider>
   );
 };
@@ -39,13 +29,10 @@ const App = () => {
 export default App;
 
 const Root = () => {
-  // Check if token exists in local storage
   const isAuthenticated = !!localStorage.getItem("token");
-
-  // Redirect to dashboard if authenticated, otherwise to login
   return isAuthenticated ? (
     <Navigate to="/dashboard" />
   ) : (
     <Navigate to="/login" />
   );
-}
+};
