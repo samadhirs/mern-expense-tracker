@@ -34,7 +34,7 @@ const RecentIncomeWithChart = ({ data, totalIncome }) => {
                 </h5>
             </div>
 
-            <CustomPieChart 
+            <CustomPieChart
                 data={chartData}
                 label="Income"
                 totalAmount={`$${totalIncome}`}
