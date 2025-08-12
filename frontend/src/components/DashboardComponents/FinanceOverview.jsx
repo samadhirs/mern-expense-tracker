@@ -1,4 +1,5 @@
 import React from 'react'
+import CustomPieChart from '../Charts/CustomPieChart';
 
 const COLORS = ["#875CF5", "#FA2C37", "#FF6900"];
 
@@ -20,7 +21,7 @@ const FinanceOverview = ({
                 <h3 className='text-lg font-semibold'>Finance Overview</h3>
             </div>
 
-            <CustomPieChart 
+            <CustomPieChart
                 data={balanceData}
                 label="Total Balance"
                 totalAmount={`$${totalBalance}`}
