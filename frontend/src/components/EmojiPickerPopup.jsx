@@ -6,20 +6,20 @@ const EmojiPickerPopup = ({ icon, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className='flex flex-col md:flex-row items-start gap-4 mb-6'>
+        <div className='flex flex-col md:flex-row items-start gap-5 mb-6'>
             <div
                 className='flex items-center gap-4 cursor-pointer'
                 onClick={() => setIsOpen(true)}
             >
-                <div className='w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center'>
+                <div className='w-12 h-12 rounded-full flex items-center justify-center text-2xl bg-purple-50 text-primary rounded-lg'>
                     {icon ? (
-                        <img src={icon} alt="" className="w-12 h-12" />
+                        <img src={icon} alt="Icon" className="w-12 h-12" />
                     ) : (
                         <LuImage />
                     )}
                 </div>
 
-                <p>
+                <p className=''>
                     {icon ? 'Change Icon' : 'Pick Icon'}
                 </p>
             </div>
@@ -27,7 +27,7 @@ const EmojiPickerPopup = ({ icon, onSelect }) => {
             {isOpen && (
                 <div className="relative">
                     <button 
-                        className='w-7 h-7 absolute top-0 right-0 bg-white rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800' 
+                        className='w-7 h-7 flex items-center justify-center bg-white border border-gray-200 rounded-full absolute -top-2 -right-2 z-10 cursor-pointer' 
                         onClick={() => setIsOpen(false)}
                     >
                         <LuX />

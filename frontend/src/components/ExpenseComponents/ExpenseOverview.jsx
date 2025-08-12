@@ -17,11 +17,11 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
         <div className='card'>
             <div className='flex items-center justify-between'>
                 <div>
-                    <h5 className='text-lg'>
+                    <h5 className='text-gray-900 text-lg font-semibold'>
                         Expense Overview
                     </h5>
 
-                    <p className='text-xs text-gray-400 mt-0.5'>
+                    <p className='text-sm text-gray-500'>
                         Track and manage your spending with a clear breakdown of all your expenses, helping you identify patterns, cut unnecessary costs, and stay within your budget.
                     </p>
                 </div>
