@@ -12,7 +12,8 @@ const TransactionInfoCard = ({
         date,
         amount,
         type,
-        hideDeleteBtn
+        hideDeleteBtn,
+        onDelete
     }) => {
     const getAmountStyles = () => type === 'income' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600';
 
@@ -34,7 +35,10 @@ const TransactionInfoCard = ({
 
                 <div className='flex items-center justify-between mt-2'>
                     {!hideDeleteBtn && (
-                        <button className='text-red-500 hover:text-red-700' onClick={onDelete}>
+                        <button 
+                            className='text-gray-400 hover:text-red-700' 
+                            onClick={onDelete}
+                        >
                             <LuTrash2 size={18} />
                         </button>
                     )}
