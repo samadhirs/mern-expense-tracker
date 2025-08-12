@@ -7,6 +7,8 @@ import ExpenseOverview from '../../components/ExpenseComponents/ExpenseOverview'
 import AddExpenseForm from '../../components/ExpenseComponents/AddExpenseForm';
 import Modal from '../../components/Modal';
 import toast from "react-hot-toast";
+import ExpenceList from '../../components/ExpenseComponents/ExpenceList';
+import DeleteAlert from '../../components/DeleteAlert';
 
 const Expences = () => {
   useUserAuth();
@@ -81,6 +83,26 @@ const Expences = () => {
     }
   };
 
+  // Delete expense
+  const deleteExpense = async (id) => {
+    try {
+      await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id));
+
+      setOpenDeleteAlert({ show: false, data: null });
+      toast.success("Expense details deleted successfully.");
+      fetchExpenseDetails();
+    } 
+    catch (error) {
+      console.error(
+        "Error deleting expense:",
+        error.response?.data?.message || error.message
+      );
+    }
+  };
+
+  // handle download expense details
+  const handleDownloadExpenseDetails = async () => {};
+
   useEffect(() => {
     fetchExpenseDetails();
 
@@ -97,6 +119,14 @@ const Expences = () => {
               onExpenseIncome={() => setOpenAddExpenseModal(true)}
             />
           </div>
+
+          <ExpenceList
+            transactions={expenseData}
+            onDelete={(id) => {
+              setOpenDeleteAlert({ show: true, data: id })
+            }}
+            onDownload={handleDownloadExpenseDetails}
+          />
         </div>
 
         <Modal
@@ -106,6 +136,17 @@ const Expences = () => {
         >
           <AddExpenseForm
             onAddExpense={handleAddExpense}
+          />
+        </Modal>
+
+        <Modal
+          isOpen={openDeleteAlart.show}
+          onClose={() => setOpenDeleteAlert({ show: false, data: null })}
+          title="Delete Expense"
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this expense details."
+            onDelete={() => deleteExpense(openDeleteAlart.data)}
           />
         </Modal>
       </div>
