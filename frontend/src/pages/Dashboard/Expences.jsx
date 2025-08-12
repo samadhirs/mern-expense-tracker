@@ -4,6 +4,9 @@ import DashboardLayout from '../../components/layouts/DashboardLayout';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import ExpenseOverview from '../../components/ExpenseComponents/ExpenseOverview';
+import AddExpenseForm from '../../components/ExpenseComponents/AddExpenseForm';
+import Modal from '../../components/Modal';
+import toast from "react-hot-toast";
 
 const Expences = () => {
   useUserAuth();
@@ -40,7 +43,7 @@ const Expences = () => {
   };
 
   // Add expense handler
-  const handleAddExpense = async (income) => {
+  const handleAddExpense = async (expense) => {
     const { category, amount, date, icon } = expense;
 
     if (!category.trim()) {
@@ -68,7 +71,7 @@ const Expences = () => {
 
       setOpenAddExpenseModal(false);
       toast.success("Expense added successfully");
-      fetchIncomeDetails();
+      fetchExpenseDetails();
     } 
     catch (error) {
       console.error(
